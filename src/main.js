@@ -9,6 +9,12 @@ import "./assets/styles/styles.scss"; //自己创建的样式文件
 import router from "./router"; //路由插件
 import "./components"; //导入全局注册的组件的文件
 import "./plugins/element.js";
+import echarts from "echarts";
+import axios from "axios"; //导入axios
+Vue.prototype.$axios = axios; //注册到vue上
+
+Vue.use(echarts);
+Vue.prototype.$echarts = echarts;
 
 Vue.use(ElementUI);
 
