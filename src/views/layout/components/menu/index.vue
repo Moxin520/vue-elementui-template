@@ -1,8 +1,8 @@
 <!-- 父级菜单 -->
 <template>
-  <div style="height: 100%;">
+  <div>
     <el-menu
-      style="min-width:200px;text-align: left;height: 100%;"
+      style="min-width:200px;text-align: left;height: calc(100vh - 60px);"
       :default-active="$route.path"
       class="el-menu-vertical-demo"
       @open="handleOpen"
@@ -12,18 +12,34 @@
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b"
+      :collapse="isCollapse"
     >
-      <MenuTree :routeList="this.routeList"></MenuTree>
+      <template v-for="route in routeList">
+        <MenuTree
+          v-if="route.isShow"
+          :key="route.name"
+          :item="route"
+          :base-path="route.path"
+        ></MenuTree>
+      </template>
     </el-menu>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import MenuTree from "./MenuTree";
 export default {
   name: "Menu",
   components: {
     MenuTree
+  },
+  computed: {
+    ...mapGetters(["menuOpen"]),
+    isCollapse() {
+      //isCollapse true 展开  false收缩
+      return !this.menuOpen;
+    }
   },
   data() {
     return {
@@ -34,13 +50,16 @@ export default {
   //生命周期 - 挂载完成（访问DOM元素）
   mounted() {
     console.log("路由:", this.routeList);
+    console.log("1111111111111", this.menuOpen);
   },
 
   methods: {
-    handleOpen(val) {
-      console.log("555555555555555555555", val);
+    handleOpen(key, keyPath) {
+      console.log(key, keyPath);
     },
-    handleClose() {}
+    handleClose(key, keyPath) {
+      console.log(key, keyPath);
+    }
   },
 
   //生命周期 - 创建完成（访问当前this实例）

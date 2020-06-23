@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import NProgress from "nprogress"; //导入进度条
+import Layout from "@/views/layout/layout";
 
 Vue.use(VueRouter);
 NProgress.configure({ showSpinner: false }); // NProgress Configuration
@@ -8,58 +9,56 @@ NProgress.configure({ showSpinner: false }); // NProgress Configuration
 export const routes = [
   {
     path: "/",
-    name: "Home",
-    component: resolve => require([`../views/Home.vue`], resolve),
+    component: Layout,
+    name: "dashboard",
     isShow: true,
+    redirect: "/dashboard",
     meta: {
-      title: "首页"
-    }
-  },
-  {
-    path: "/example",
-    name: "Example",
-    component: resolve => require([`../views/test/test.vue`], resolve),
-    isShow: true,
-    meta: {
-      title: "示例界面"
+      title: "首页",
+      icon: "el-icon-s-promotion"
     },
     children: [
       {
-        path: "/test",
-        name: "Test",
-        component: resolve => require([`../views/test/test.vue`], resolve),
+        path: "dashboard",
+        name: "dashboard",
+        component: () => import("@/views/Home.vue"),
         isShow: true,
         meta: {
-          title: "测试页面"
+          title: "首页",
+          icon: "el-icon-s-promotion"
         }
       }
     ]
   },
   {
-    path: "/example1",
-    name: "Example1",
+    path: "/example",
+    name: "Example",
+    component: Layout,
+    redirect: "/test",
     isShow: true,
-    component: resolve => require([`../views/test/test1.vue`], resolve),
     meta: {
-      title: "示例界面1"
+      title: "示例界面",
+      icon: "el-icon-data-analysis"
     },
     children: [
       {
-        path: "/test1",
-        name: "Test1",
-        component: resolve => require([`../views/test/test1.vue`], resolve),
+        path: "test",
+        name: "Test",
+        component: () => import("@/views/test/test.vue"),
         isShow: true,
         meta: {
-          title: "测试页面1"
+          title: "测试页面",
+          icon: "el-icon-document"
         }
       },
       {
-        path: "/test",
-        name: "Test",
-        component: resolve => require([`../views/test/test.vue`], resolve),
+        path: "test1",
+        name: "Test1",
+        component: () => import("@/views/test/test1.vue"),
         isShow: true,
         meta: {
-          title: "测试页面"
+          title: "测试页面1",
+          icon: "el-icon-document"
         }
       }
     ]
@@ -67,7 +66,7 @@ export const routes = [
   {
     path: "*",
     name: "404",
-    component: resolve => require([`../views/error/404.vue`], resolve),
+    component: () => import("@/views/error/404.vue"),
     isShow: false
   }
   // {
@@ -77,7 +76,7 @@ export const routes = [
   //   // this generates a separate chunk (about.[hash].js) for this route
   //   // which is lazy-loaded when the route is visited.
   //   component: () =>
-  //     import(/* webpackChunkName: "about" */ "../views/About.vue")
+  //     import(/* webpackChunkName: "about" */ "@/views/About.vue")
   // }
 ];
 
