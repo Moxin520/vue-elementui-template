@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home content">
     <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
     <div style="height:400px;width:300px;backgroundColor:#161D3B;color:white;">

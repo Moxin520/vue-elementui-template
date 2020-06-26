@@ -1,6 +1,10 @@
 <!-- 显示区 -->
 <template>
-  <div class="appMain"><router-view></router-view></div>
+  <div class="appMain">
+    <transition name="fade-transform" mode="out-in">
+      <router-view></router-view>
+    </transition>
+  </div>
 </template>
 
 <script>
@@ -22,6 +26,25 @@ export default {
 </script>
 <style lang="scss" scoped>
 .appMain {
-  padding: 20px;
+  min-height: calc(100vh -50px);
+  position: relative;
+  overflow: hidden;
+  /* fade-transform */
+  .fade-transform-leave-active,
+  .fade-transform-enter-active {
+    transition: all 0.5s;
+  }
+
+  .fade-transform-enter {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  .fade-transform-leave-to {
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transform: translateX(30px);
+  }
 }
 </style>

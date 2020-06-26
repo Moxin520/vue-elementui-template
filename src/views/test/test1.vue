@@ -1,6 +1,10 @@
 <!-- 测试界面1 -->
 <template>
-  <div>测试界面1</div>
+  <!-- <div class="content"> -->
+  <el-card shadow="always" class="content">
+    测试界面1
+  </el-card>
+  <!-- </div> -->
 </template>
 
 <script>

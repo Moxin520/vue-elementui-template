@@ -12,6 +12,8 @@ import "./plugins/element.js";
 import echarts from "echarts";
 import axios from "axios"; //导入axios
 Vue.prototype.$axios = axios; //注册到vue上
+import Fragment from "vue-fragment";
+Vue.use(Fragment.Plugin);
 
 Vue.use(echarts);
 Vue.prototype.$echarts = echarts;

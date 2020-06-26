@@ -1,10 +1,10 @@
 <!-- 导航 -->
 <template>
   <div class="layout">
-    <Navigation></Navigation>
+    <MenuTree class="MenuTree"></MenuTree>
     <div class="main">
-      <MenuTree></MenuTree>
-      <appMain></appMain>
+      <Navigation></Navigation>
+      <appMain class="appMain"></appMain>
     </div>
   </div>
 </template>
@@ -31,11 +31,15 @@ export default {
 <style lang="scss" scoped>
 .layout {
   display: flex;
-  flex-direction: column;
-}
-.main {
-  flex: 1;
-  display: flex;
   flex-direction: row;
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    .appMain {
+      flex: 1;
+      background-color: #f0f2f5;
+    }
+  }
 }
 </style>

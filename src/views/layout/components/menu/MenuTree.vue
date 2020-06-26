@@ -1,8 +1,6 @@
 <!-- 左侧菜单 -->
 <template>
-  <div>
-    <!-- <div v-for="routes in item" :key="routes.path"> -->
-    <!-- <div v-if="item.isShow"> -->
+  <fragment>
     <el-submenu
       :index="resolvePath(item.path)"
       v-if="item.isShow && item.children && item.children.length > 1"
@@ -28,9 +26,7 @@
       <i :class="item.meta.icon"></i>
       <span slot="title">{{ item.meta.title }}</span>
     </el-menu-item>
-  </div>
-  <!-- </div> -->
-  <!-- </div> -->
+  </fragment>
 </template>
 
 <script>
@@ -74,8 +70,4 @@ export default {
   // created() {}
 };
 </script>
-<style scoped>
-.menu {
-  height: 100vh;
-}
-</style>
+<style scoped></style>

@@ -16,3 +16,17 @@
 .el-menu.el-menu--horizontal{
   border: none;
 }
+
+.isCollapseClassName{
+  .el-button{
+    font-size: $--font-size-20;
+    color: black;
+  }
+}
+
+.el-scrollbar {
+  height: 100%;
+  border-right: 1px solid #F0F2F5;
+  height: calc(100% - 50px);
+
+}
