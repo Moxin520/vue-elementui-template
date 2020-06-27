@@ -1,7 +1,7 @@
 <!-- 测试界面 -->
 <template>
   <div class="content">
-    <el-card shadow="always">
+    <el-card shadow="always" class="content">
       <el-switch
         v-model="value"
         active-color="#13ce66"

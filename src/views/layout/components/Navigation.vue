@@ -8,23 +8,7 @@
           @click="changeCollapse"
         ></el-button>
       </div>
-      <div></div>
-      <!-- <el-menu
-        :default-active="activeIndex2"
-        class="el-menu-demo"
-        mode="horizontal"
-        @select="handleSelect"
-        background-color="#1890ff"
-        text-color="#fff"
-        active-text-color="#ffd04b"
-      >
-        <el-submenu index="2">
-          <template slot="title">我的工作台</template>
-          <el-menu-item index="2-1">选项1</el-menu-item>
-          <el-menu-item index="2-2">选项2</el-menu-item>
-          <el-menu-item index="2-3">选项3</el-menu-item>
-        </el-submenu>
-      </el-menu> -->
+      <div>用户名</div>
     </div>
   </div>
 </template>
@@ -60,10 +44,10 @@ export default {
 <style lang="scss" scoped>
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   color: white;
   height: 50px;
+  padding: 0 20px 0 10px;
   background-color: #1890ff;
   .logo {
     font-size: 20px;

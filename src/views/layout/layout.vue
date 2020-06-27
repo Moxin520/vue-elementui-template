@@ -4,7 +4,7 @@
     <MenuTree class="MenuTree"></MenuTree>
     <div class="main">
       <Navigation></Navigation>
-      <appMain class="appMain"></appMain>
+      <appMain class="appMainBox"></appMain>
     </div>
   </div>
 </template>
@@ -30,13 +30,15 @@ export default {
 </script>
 <style lang="scss" scoped>
 .layout {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   .main {
     flex: 1;
     display: flex;
     flex-direction: column;
-    .appMain {
+    .appMainBox {
       flex: 1;
       background-color: #f0f2f5;
     }

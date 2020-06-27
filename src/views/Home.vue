@@ -1,44 +1,50 @@
 <template>
-  <div class="home content">
-    <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
-    <div style="height:400px;width:300px;backgroundColor:#161D3B;color:white;">
-      <div style="height:100px;text-align:left">
-        <div>单位GDP能耗量 （tce/万元）</div>
-        <div style="margin-top:20px;">
-          <span style="font-size:34px;font-weight: bold;">0.244 </span>
-          <span style="margin-left:10px;color:red;font-size:14px">-2.1% </span>
-          <span style="margin-left:2px">同比</span>
-        </div>
-      </div>
-      <div style="display:flex;text-align:left">
-        <div
-          class="total-class"
-          id="myChart"
-          :style="{ width: '150px', height: '300px' }"
-        ></div>
-        <div style="margin-left:20px;width:200px;">
-          <div style="margin-top:100px;">
-            <div style="font-size:34px;margin:10px 0">0.2</div>
-            <div>标杆水平</div>
-          </div>
-          <div style="margin-top:55px">
-            <div style="display:flex;margin-bottom:20px">
-              <div
-                style="width:14px;height:14px;border-radius: 50%;backgroundColor:#04c3f1;margin-right:10px"
-              ></div>
-              <div>当前完成值</div>
-            </div>
-            <div style="display:flex;">
-              <div
-                style="width:14px;height:14px;border-radius: 50%;backgroundColor:#54e568;margin-right:10px"
-              ></div>
-              <div>上一年完成值</div>
-            </div>
+  <div class="home">
+    <el-card shadow="always" class="content">
+      <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
+      <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
+      <div
+        style="height:400px;width:300px;backgroundColor:#161D3B;color:white;"
+      >
+        <div style="height:100px;text-align:left">
+          <div>单位GDP能耗量 （tce/万元）</div>
+          <div style="margin-top:20px;">
+            <span style="font-size:34px;font-weight: bold;">0.244 </span>
+            <span style="margin-left:10px;color:red;font-size:14px"
+              >-2.1%
+            </span>
+            <span style="margin-left:2px">同比</span>
           </div>
         </div>
+        <div style="display:flex;text-align:left">
+          <div
+            class="total-class"
+            id="myChart"
+            :style="{ width: '150px', height: '300px' }"
+          ></div>
+          <div style="margin-left:20px;width:200px;">
+            <div style="margin-top:100px;">
+              <div style="font-size:34px;margin:10px 0">0.2</div>
+              <div>标杆水平</div>
+            </div>
+            <div style="margin-top:55px">
+              <div style="display:flex;margin-bottom:20px">
+                <div
+                  style="width:14px;height:14px;border-radius: 50%;backgroundColor:#04c3f1;margin-right:10px"
+                ></div>
+                <div>当前完成值</div>
+              </div>
+              <div style="display:flex;">
+                <div
+                  style="width:14px;height:14px;border-radius: 50%;backgroundColor:#54e568;margin-right:10px"
+                ></div>
+                <div>上一年完成值</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </el-card>
   </div>
 </template>
 

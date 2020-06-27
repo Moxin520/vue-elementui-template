@@ -1,15 +1,4 @@
 /* theme color */
-
-
-.el-card__body {
-  padding: 0;
-}
-.el-aside{
-  width: auto!important;
-}
-.el-header{
-  padding: 0;
-}
 .el-menu{
   border-right: none;
 }
@@ -25,8 +14,8 @@
 }
 
 .el-scrollbar {
-  height: 100%;
   border-right: 1px solid #F0F2F5;
+}
+.el-scrollbar__wrap{
   height: calc(100% - 50px);
-
 }

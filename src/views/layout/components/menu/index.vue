@@ -1,10 +1,10 @@
 <!-- 父级菜单 -->
 <template>
-  <div>
+  <div class="sidebar">
     <logo :collapse="isCollapse"></logo>
     <el-scrollbar class="scrollbar">
       <el-menu
-        :default-active="$route.path"
+        :default-active="$route.path == '/dashboard' ? '/' : $route.path"
         class="el-menu-vertical-demo elmenu"
         @open="handleOpen"
         router
@@ -54,7 +54,7 @@ export default {
 
   //生命周期 - 挂载完成（访问DOM元素）
   mounted() {
-    console.log("路由:", this.routeList);
+    console.log("路由:", this.routeList, this.$route.path);
     console.log("1111111111111", this.isCollapse);
   },
 
@@ -68,16 +68,21 @@ export default {
   },
 
   //生命周期 - 创建完成（访问当前this实例）
-  created() {}
+  created() {
+    console.log("路由:", this.routeList, this.$route.path);
+  }
 };
 </script>
 <style lang="scss" scoped>
-.elmenu {
-  // height: calc(100vh - 50px);
-  height: 100vh;
-  text-align: left;
-  z-index: 9999;
+.sidebar {
+  height: calc(100vh - 50px);
+  .elmenu {
+    height: 100%;
+    text-align: left;
+    height: calc(100vh - 50px);
+  }
 }
+
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
 }
