@@ -2,10 +2,10 @@
 <template>
   <div class="logo">
     <transition name="sidebarLogoFade" mode="out-in">
-      <div v-if="collapse" class="logoTitle" key="logoImage">
+      <div v-if="collapse" class="logoTitle " key="logoImage">
         <i class="el-icon-share logoImage"></i>
       </div>
-      <div v-else class="logoTitle" key="logoTitle">
+      <div v-else class="logoTitle " key="logoTitle">
         <i class="el-icon-share logoImage"></i>
         <span class="title">我是logo呀</span>
       </div>
@@ -38,34 +38,29 @@ export default {
 </script>
 <style lang="scss" scoped>
 .sidebarLogoFade-enter-active {
-  transition: opacity 2s;
+  transition: opacity 1s;
 }
+
 .sidebarLogoFade-enter,
 .sidebarLogoFade-leave-to {
   opacity: 0;
 }
+
 .logo {
-  background-color: #1890ff;
-  position: relative;
-  width: 100%;
   height: 50px;
   line-height: 50px;
   background: #1890ff;
-  text-align: center;
   overflow: hidden;
+  text-align: center;
   .logoTitle {
-    width: 100%;
-    height: 100%;
     .logoImage {
-      width: 30px;
-      font-size: 30px;
+      width: 40px;
+      font-size: 20px;
       height: 30px;
-      vertical-align: middle;
-      margin: 0 5px;
     }
+
     .title {
-      vertical-align: middle;
-      font-size: 26px;
+      font-size: 20px;
     }
   }
 }

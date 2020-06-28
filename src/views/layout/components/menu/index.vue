@@ -75,11 +75,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 .sidebar {
-  height: calc(100vh - 50px);
   .elmenu {
     height: 100%;
     text-align: left;
-    height: calc(100vh - 50px);
   }
 }
 

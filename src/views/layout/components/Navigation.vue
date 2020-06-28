@@ -4,11 +4,41 @@
       <div class="isCollapseClassName">
         <el-button
           type="text"
-          icon="el-icon-s-fold"
+          :icon="isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'"
           @click="changeCollapse"
-        ></el-button>
+        >
+        </el-button>
+        <breadcrumb></breadcrumb>
       </div>
-      <div>用户名</div>
+    </div>
+    <div class=" left">
+      <div class="information">
+        <el-dropdown @command="handleCommand">
+          <span class="el-dropdown-link">
+            <el-avatar
+              size="medium"
+              fit="fill"
+              src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+            ></el-avatar>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <div style="margin:0 10px; padding:0 10px">
+              <el-avatar
+                shape="square"
+                :size="150"
+                src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+              ></el-avatar>
+              <el-divider>头像</el-divider>
+            </div>
+            <el-dropdown-item command="a" icon="el-icon-user-solid"
+              >个人信息
+            </el-dropdown-item>
+            <el-dropdown-item command="b" icon="el-icon-s-home"
+              >退出登陆</el-dropdown-item
+            >
+          </el-dropdown-menu>
+        </el-dropdown>
+      </div>
     </div>
   </div>
 </template>
@@ -25,18 +55,19 @@ export default {
     }
   },
   data() {
-    return {
-      activeIndex2: "2"
-    };
+    return {};
   },
+
+  //生命周期 - 创建完成（访问当前this实例）
+  created() {},
   methods: {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
     },
     changeCollapse() {
-      console.log("11111111111111111", this.isCollapse);
       this.$store.commit("settings/SET_MENUOPEN", this.isCollapse);
-    }
+    },
+    handleCommand() {}
   }
 };
 </script>
@@ -44,31 +75,37 @@ export default {
 <style lang="scss" scoped>
 .header {
   display: flex;
-  align-items: center;
   color: white;
   height: 50px;
-  padding: 0 20px 0 10px;
+  padding: 0 10px 0 10px;
+  justify-content: space-between;
   background-color: #1890ff;
-  .logo {
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 50px;
-  }
+
   .right {
-    flex: 1;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    line-height: 50px;
+    .isCollapseClassName {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
-  .m200 {
-    width: 200px;
-    transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+  .left {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    .information {
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
-  .m60 {
-    width: 60px;
-    transition: border-color 0.3s, background-color 0.3s, color 0.3s;
-  }
+}
+.el-dropdown-link {
+  cursor: pointer;
 }
 </style>

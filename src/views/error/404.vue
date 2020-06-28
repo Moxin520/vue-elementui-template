@@ -1,6 +1,6 @@
 <!-- 404界面 -->
 <template>
-  <div>我是404</div>
+  <div class="err404">我是404</div>
 </template>
 
 <script>
@@ -20,4 +20,8 @@ export default {
   // created() {}
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.err404 {
+  text-align: center;
+}
+</style>

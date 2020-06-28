@@ -28,7 +28,7 @@ export default {
 /* fade-transform */
 .fade-transform-leave-active,
 .fade-transform-enter-active {
-  transition: all 0.5s;
+  transition: all 0.2s;
 }
 
 .fade-transform-enter {

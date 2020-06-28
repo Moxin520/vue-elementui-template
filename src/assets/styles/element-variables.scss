@@ -13,9 +13,38 @@
   }
 }
 
-.el-scrollbar {
-  border-right: 1px solid #F0F2F5;
+
+.MenuTree{
+  z-index: 1001;
+  //解决左侧菜单栏展开收缩卡顿
+  .horizontal-collapse-transition {
+    transition: 0.1s width ease-in-out, 0.1s padding-left ease-in-out, 0.1s padding-right ease-in-out;
+  }
+
+  .scrollbar-wrapper {
+    overflow-x: hidden !important;
+  }
+
+  .el-scrollbar__bar.is-vertical {
+    right: 0px;
+  }
+
+  .el-scrollbar {
+    border-right: 1px solid #F0F2F5;
+  }
+  .el-scrollbar__wrap{
+    height: calc(100% - 50px);
+  }
 }
-.el-scrollbar__wrap{
-  height: calc(100% - 50px);
+
+
+.breadcrumb {
+  margin: 0 20px;
+  .el-breadcrumb__separator{
+    color: grey;
+  }
+}
+
+.el-divider--horizontal{
+  margin: 10px 0;
 }
