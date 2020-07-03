@@ -45,6 +45,8 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { removeToken } from "@/utils/auth"; // get token from cookie
+
 export default {
   name: "Navigation",
   computed: {
@@ -67,7 +69,16 @@ export default {
     changeCollapse() {
       this.$store.commit("settings/SET_MENUOPEN", this.isCollapse);
     },
-    handleCommand() {}
+    handleCommand(command) {
+      if (command == "b") {
+        this.$store.commit("user/SET_TOKEN", false);
+        removeToken();
+        this.$router.push({
+          path: "/login"
+        });
+      }
+      console.log(command);
+    }
   }
 };
 </script>

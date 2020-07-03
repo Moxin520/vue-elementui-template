@@ -1,7 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import NProgress from "nprogress"; //导入进度条
+// import store from "../store";
 import Layout from "@/views/layout/layout";
+import { getToken } from "@/utils/auth"; // get token from cookie
 
 Vue.use(VueRouter);
 NProgress.configure({ showSpinner: false }); // NProgress Configuration
@@ -60,6 +62,16 @@ export const routes = [
           title: "测试页面1",
           icon: "el-icon-document"
         }
+      },
+      {
+        path: "printjs",
+        name: "printjs",
+        component: () => import("@/views/test/printjs.vue"),
+        isShow: true,
+        meta: {
+          title: "打印案例",
+          icon: "el-icon-document"
+        }
       }
     ]
   },
@@ -67,6 +79,12 @@ export const routes = [
     path: "*",
     name: "404",
     component: () => import("@/views/error/404.vue"),
+    isShow: false
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: () => import("@/views/login/index.vue"),
     isShow: false
   }
   // {
@@ -94,9 +112,34 @@ VueRouter.prototype.push = function push(location) {
 };
 // to, from,
 router.beforeEach((to, from, next) => {
+  let token = getToken();
   NProgress.start(); //开始进度条
-  next();
-  console.log("路由信息: to", to, "from:", from);
+  let require = true;
+  if (require) {
+    console.log("路由信息: to", to, "from:", from, token);
+    if (token) {
+      console.log("111111111112222", to.path);
+      if (to.path == "/login") {
+        next({ path: "/dashboard" });
+        NProgress.done();
+      } else {
+        next();
+      }
+    } else {
+      if (to.path == "/login") {
+        next();
+        NProgress.done();
+      } else {
+        next({
+          path: "/login", // 未登录则跳转至login页面
+          query: { redirect: to.fullPath } // 登陆成功后回到当前页面，这里传值给login页面，to.fullPath为当前点击的页面
+        });
+        NProgress.done();
+      }
+    }
+  } else {
+    next();
+  }
 });
 // to, from
 router.afterEach(() => {

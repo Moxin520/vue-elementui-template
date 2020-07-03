@@ -1,9 +1,13 @@
 <!-- 测试界面1 -->
 <template>
   <div class="content">
-    <el-card shadow="always">
-      测试界面1
-    </el-card>
+    <!-- <el-card shadow="always"> -->
+    <!-- 测试界面1
+      <div v-for="(item, index) in coustomer" :key="item">
+        <p v-if="item.c == index">{{ item.name }}</p>
+      </div> -->
+    <iframe style="width:100%;height:100vh" :src="src" frameborder="0"></iframe>
+    <!-- </el-card> -->
   </div>
 </template>
 
@@ -12,7 +16,13 @@ export default {
   name: "test1",
   components: {},
   data() {
-    return {};
+    return {
+      coustomer: [
+        { name: "ssss", c: "0" },
+        { name: "aaaaa", c: "1" }
+      ],
+      src: "/OneChaos/page/system/role/list"
+    };
   },
 
   //生命周期 - 挂载完成（访问DOM元素）
