@@ -116,7 +116,7 @@ var validateEMail = (rule, value, callback) => {
 };
 /* 不能出现@符号*/
 var validateSign = (rule, value, callback) => {
-  const reg = /@/;
+  // const reg = /@/;
   if (value == "" || value == undefined || value == null) {
     callback();
   } else {
