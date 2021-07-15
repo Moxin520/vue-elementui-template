@@ -50,7 +50,6 @@ export default {
   methods: {
     handleLogin() {
       this.$store.commit("user/SET_TOKEN", true);
-      console.log("444444444");
       this.$router.push({
         path: "/dashboard"
       });
@@ -88,7 +87,6 @@ export default {
       if (this.isOut) {
         let inx = e.clientX - e.target.offsetLeft;
         let iny = e.clientY - e.target.offsetTop;
-        console.log("xyout:", inx, iny);
         this.styleXY = {
           left: inx + "px",
           top: iny + "px"

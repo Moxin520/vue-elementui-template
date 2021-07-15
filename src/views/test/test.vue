@@ -30,11 +30,6 @@ export default {
     };
   },
 
-  // //生命周期 - 挂载完成（访问DOM元素）
-  mounted() {
-    console.log("222222222");
-  },
-
   methods: {
     change() {
       if (this.value === "1") {

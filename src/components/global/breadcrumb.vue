@@ -32,7 +32,6 @@ export default {
     getBreadList() {
       let matched = this.$route.matched;
       this.levelList = matched;
-      console.log(this.levelList);
     },
     handleLink(item) {
       this.$router.push(item.path);

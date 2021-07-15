@@ -50,9 +50,6 @@ export default {
     }
   },
   methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
-    },
     changeCollapse() {
       this.$store.commit("settings/SET_MENUOPEN", this.isCollapse);
     },
@@ -64,7 +61,6 @@ export default {
           path: "/login"
         });
       }
-      console.log(command);
     }
   }
 };
