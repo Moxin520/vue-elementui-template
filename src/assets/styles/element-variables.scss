@@ -1,24 +1,26 @@
 /* theme color */
-.el-menu{
-  border-right: none;
-}
-.el-menu.el-menu--horizontal{
-  border: none;
-}
 
-.isCollapseClassName{
-  .el-button{
-    font-size: $--font-size-20;
+.isCollapseClassName {
+  display: flex;
+  align-items: center;
+  .el-button {
+    font-size: $--font-size-24;
     color: black;
   }
 }
 
-
-.MenuTree{
+.MenuTree {
   z-index: 1001;
+  .el-menu {
+    border-right: none;
+  }
+  .el-menu.el-menu--horizontal {
+    border: none;
+  }
   //解决左侧菜单栏展开收缩卡顿
   .horizontal-collapse-transition {
-    transition: 0.1s width ease-in-out, 0.1s padding-left ease-in-out, 0.1s padding-right ease-in-out;
+    transition: 0.1s width ease-in-out, 0.1s padding-left ease-in-out,
+      0.1s padding-right ease-in-out;
   }
 
   .scrollbar-wrapper {
@@ -30,21 +32,63 @@
   }
 
   .el-scrollbar {
-    border-right: 1px solid #F0F2F5;
+    overflow-x: hidden !important;
+    box-shadow: 5px 0px 4px -4px rgba(0, 20, 40, 0.2);
+    height: calc(100% - 50px);
   }
-  .el-scrollbar__wrap{
+  .el-scrollbar__wrap {
     height: calc(100% - 50px);
   }
 }
 
-
-.breadcrumb {
-  margin: 0 20px;
-  .el-breadcrumb__separator{
-    color: grey;
-  }
+.el-divider--horizontal {
+  margin: 10px 0;
 }
 
-.el-divider--horizontal{
-  margin: 10px 0;
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  height: 100%;
+}
+
+.sidebarLogoFade-enter-active {
+  transition: opacity 1s;
+}
+
+.sidebarLogoFade-enter,
+.sidebarLogoFade-leave-to {
+  opacity: 0;
+}
+
+/* fade-transform */
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.3s;
+}
+
+.fade-transform-enter {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fade-transform-leave-to {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.fadeBreadcrumb-enter-active,
+.fadeBreadcrumb-leave-active {
+  transition: all 0.3s;
+}
+.fadeBreadcrumb-enter,
+.fadeBreadcrumb-leave-active {
+  opacity: 0;
+  transform: translateX(15px);
+}
+.fadeBreadcrumb-move {
+  transition: all 0.3s;
+}
+.fadeBreadcrumb-leave-active {
+  position: absolute;
 }

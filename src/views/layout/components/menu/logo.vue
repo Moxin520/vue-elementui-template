@@ -1,67 +1,30 @@
 <!-- logo -->
-<template>
+<template functional>
   <div class="logo">
     <transition name="sidebarLogoFade" mode="out-in">
-      <div v-if="collapse" class="logoTitle " key="logoImage">
-        <i class="el-icon-share logoImage"></i>
+      <div v-if="props.collapse" key="logoImage">
+        <i class="el-icon-sunny logoImage"></i>
       </div>
-      <div v-else class="logoTitle " key="logoTitle">
-        <i class="el-icon-share logoImage"></i>
-        <span class="title">我是logo呀</span>
+      <div v-else key="logoTitle">
+        <i class="el-icon-sunny logoImage"></i>
+        <span>demo学习</span>
       </div>
     </transition>
   </div>
 </template>
 
-<script>
-export default {
-  name: "logo",
-  props: {
-    collapse: {
-      type: Boolean,
-      required: true
-    }
-  },
-  components: {},
-  data() {
-    return {};
-  },
-
-  //生命周期 - 挂载完成（访问DOM元素）
-  mounted() {},
-
-  methods: {},
-
-  //生命周期 - 创建完成（访问当前this实例）
-  created() {}
-};
-</script>
 <style lang="scss" scoped>
-.sidebarLogoFade-enter-active {
-  transition: opacity 1s;
-}
-
-.sidebarLogoFade-enter,
-.sidebarLogoFade-leave-to {
-  opacity: 0;
-}
-
 .logo {
   height: 50px;
   line-height: 50px;
-  background: #1890ff;
   overflow: hidden;
   text-align: center;
-  .logoTitle {
-    .logoImage {
-      width: 40px;
-      font-size: 20px;
-      height: 30px;
-    }
-
-    .title {
-      font-size: 20px;
-    }
+  cursor: default;
+  font-size: 20px;
+  .logoImage {
+    width: 30px;
+    font-size: 24px;
+    height: 30px;
   }
 }
 </style>

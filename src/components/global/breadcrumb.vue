@@ -1,29 +1,25 @@
 <!-- 面包屑 -->
 <template>
-  <div class="breadcrumb">
-    <el-breadcrumb separator="/">
-      <transition-group name="fade" mode="out-in">
-        <el-breadcrumb-item v-for="item in levelList" :key="item.path">
-          <a
-            v-if="typeof item.redirect === 'undefined'"
-            class="son"
-            @click.prevent="handleLink(item)"
-            style="color: white;cursor: pointer;"
-            >{{ item.meta.title }}</a
-          >
-          <span v-else class="parent">
-            {{ item.meta.title }}
-          </span>
-        </el-breadcrumb-item>
-      </transition-group>
-    </el-breadcrumb>
-  </div>
+  <el-breadcrumb separator="/" class="breadcrumb">
+    <transition-group name="fadeBreadcrumb" mode="out-in">
+      <el-breadcrumb-item v-for="item in levelList" :key="item.path">
+        <span
+          v-if="typeof item.redirect === 'undefined'"
+          @click.prevent="handleLink(item)"
+          class="sons"
+        >
+          {{ item.meta.title }}
+        </span>
+        <span v-else class="parent">
+          {{ item.meta.title }}
+        </span>
+      </el-breadcrumb-item>
+    </transition-group>
+  </el-breadcrumb>
 </template>
-
 <script>
 export default {
   name: "breadcrumb",
-  components: {},
   data() {
     return {
       levelList: []
@@ -32,10 +28,6 @@ export default {
   watch: {
     $route: "getBreadList"
   },
-
-  //生命周期 - 挂载完成（访问DOM元素）
-  mounted() {},
-
   methods: {
     getBreadList() {
       let matched = this.$route.matched;
@@ -46,39 +38,19 @@ export default {
       this.$router.push(item.path);
     }
   },
-
-  //生命周期 - 创建完成（访问当前this实例）
   created() {
     this.getBreadList();
   }
 };
 </script>
 <style lang="scss" scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.38s;
-}
-
-.fade-enter,
-.fade-leave-active {
-  opacity: 0;
-  transform: translateX(20px);
-}
-
-.fade-move {
-  transition: all 0.38s;
-}
-
-.fade-leave-active {
-  position: absolute;
-}
-
-.parent {
-  color: black;
-  font-weight: bold;
-}
-.son {
-  color: white;
-  cursor: pointer;
+.breadcrumb {
+  margin: 0 20px;
+  .parent {
+    cursor: default;
+  }
+  .sons {
+    cursor: pointer;
+  }
 }
 </style>

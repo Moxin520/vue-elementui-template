@@ -33,10 +33,43 @@ export const routes = [
     ]
   },
   {
+    path: "/company",
+    component: Layout,
+    name: "Company",
+    isShow: true,
+    redirect: "/company/heatmap",
+    meta: {
+      title: "工作测试",
+      icon: "el-icon-suitcase-1"
+    },
+    children: [
+      {
+        path: "heatmap",
+        name: "Heatmap",
+        component: () => import("@/views/company/heatmap.vue"),
+        isShow: true,
+        meta: {
+          title: "热力图",
+          icon: "el-icon-data-line"
+        }
+      },
+      {
+        path: "test",
+        name: "Test",
+        component: () => import("@/views/test/test.vue"),
+        isShow: true,
+        meta: {
+          title: "测试页面",
+          icon: "el-icon-document"
+        }
+      }
+    ]
+  },
+  {
     path: "/example",
     name: "Example",
     component: Layout,
-    redirect: "/test",
+    redirect: "/example/test",
     isShow: true,
     meta: {
       title: "示例界面",
@@ -116,9 +149,7 @@ router.beforeEach((to, from, next) => {
   NProgress.start(); //开始进度条
   let require = true;
   if (require) {
-    console.log("路由信息: to", to, "from:", from, token);
     if (token) {
-      console.log("111111111112222", to.path);
       if (to.path == "/login") {
         next({ path: "/dashboard" });
         NProgress.done();

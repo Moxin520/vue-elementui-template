@@ -1,15 +1,12 @@
 <!-- 父级菜单 -->
 <template>
-  <div class="sidebar">
+  <div>
     <logo :collapse="isCollapse"></logo>
-    <el-scrollbar class="scrollbar">
+    <el-scrollbar class="scrollbar" wrap-class="scrollbar-wrapper">
       <el-menu
-        :default-active="$route.path == '/dashboard' ? '/' : $route.path"
-        class="el-menu-vertical-demo elmenu"
-        @open="handleOpen"
+        :default-active="$route.path === '/dashboard' ? '/' : $route.path"
+        class="el-menu-vertical-demo elmenuTree"
         router
-        unique-opened
-        @close="handleClose"
         background-color="#fff"
         text-color="#000"
         active-text-color="#1890FF"
@@ -30,9 +27,8 @@
 
 <script>
 import { mapGetters } from "vuex";
-import MenuTree from "./MenuTree";
-import logo from "./logo";
-
+const logo = () => import("./logo");
+const MenuTree = () => import("./MenuTree");
 export default {
   name: "Menu",
   components: {
@@ -44,47 +40,10 @@ export default {
     isCollapse() {
       //isCollapse true 展开  false收缩
       return !this.menuOpen;
-    }
-  },
-  data() {
-    return {
-      routeList: this.$router.options.routes
-    };
-  },
-
-  //生命周期 - 挂载完成（访问DOM元素）
-  mounted() {
-    console.log("路由:", this.routeList, this.$route.path);
-    console.log("1111111111111", this.isCollapse);
-  },
-
-  methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
     },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
+    routeList() {
+      return this.$router.options.routes;
     }
-  },
-
-  //生命周期 - 创建完成（访问当前this实例）
-  created() {
-    console.log("路由:", this.routeList, this.$route.path);
   }
 };
 </script>
-<style lang="scss" scoped>
-.sidebar {
-  .elmenu {
-    height: 100%;
-    text-align: left;
-  }
-}
-
-.el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 200px;
-}
-.scrollbar {
-  overflow-x: hidden !important;
-}
-</style>

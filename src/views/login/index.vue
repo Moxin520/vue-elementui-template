@@ -1,13 +1,8 @@
 <!-- 登陆界面 -->
 <template>
-  <!-- <div>
-    我是登陆界面
-
-    <el-button type="primary" plain @click="handleLogin">登陆</el-button>
-  </div> -->
   <div class="body">
     <div
-      class="container"
+      class="container body"
       ref="container"
       @mouseover="mouseOver"
       @mouseleave="mouseLeave"
@@ -36,7 +31,6 @@
 <script>
 export default {
   name: "login",
-  components: {},
   data() {
     return {
       loginForm: {
@@ -52,9 +46,6 @@ export default {
       className: ""
     };
   },
-
-  //生命周期 - 挂载完成（访问DOM元素）
-  mounted() {},
 
   methods: {
     handleLogin() {
@@ -113,10 +104,7 @@ export default {
         }, 500);
       }
     }
-  },
-
-  //生命周期 - 创建完成（访问当前this实例）
-  created() {}
+  }
 };
 </script>
 <style lang="scss" scoped>

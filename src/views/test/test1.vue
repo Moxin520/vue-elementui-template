@@ -1,15 +1,8 @@
 <!-- 测试界面1 -->
 <template>
-  <div class="content">
-    <!-- <el-card shadow="always"> -->
-    <!-- 测试界面1
-      <div v-for="(item, index) in coustomer" :key="item">
-        <p v-if="item.c == index">{{ item.name }}</p>
-      </div> -->
-    <!-- </el-card> -->
-
-    <iframe style="width:100%;height:100vh" :src="src" frameborder="0"></iframe>
-  </div>
+  <el-card shadow="always">
+    测试界面1
+  </el-card>
 </template>
 
 <script>

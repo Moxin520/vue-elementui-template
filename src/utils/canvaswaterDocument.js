@@ -72,6 +72,7 @@ export function __waterDocument({
         // 避免一直触发
         mo.disconnect();
         mo = null;
+        // eslint-disable-next-line no-undef
         __canvasWM(JSON.parse(JSON.jsstringify(args)));
       }
     });

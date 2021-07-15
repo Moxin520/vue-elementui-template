@@ -31,43 +31,22 @@
 
 <script>
 import path from "path";
-
 export default {
   name: "MenuTree",
   props: {
-    // route object
     item: {
       type: Object,
       required: true
     },
-    // isNest: {
-    //   type: Boolean,
-    //   default: false
-    // },
     basePath: {
       type: String,
       default: ""
     }
   },
-  components: {},
-  data() {
-    return {};
-  },
-
-  //生命周期 - 挂载完成（访问DOM元素）
-  mounted() {
-    console.log("子路由:", this.item, this.basePath);
-  },
-
   methods: {
     resolvePath(...paths) {
-      console.log("666666666666666666", ...paths);
       return path.resolve(this.basePath, ...paths);
     }
   }
-
-  //生命周期 - 创建完成（访问当前this实例）
-  // created() {}
 };
 </script>
-<style scoped></style>
