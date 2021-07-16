@@ -17,14 +17,13 @@
 .logo {
   height: 50px;
   line-height: 50px;
-  overflow: hidden;
   text-align: center;
   cursor: default;
   font-size: 20px;
   .logoImage {
     width: 30px;
-    font-size: 24px;
     height: 30px;
+    font-size: 24px;
   }
 }
 </style>

@@ -11,8 +11,10 @@ import echarts from "echarts";
 import axios from "axios"; //导入axios
 import Fragment from "vue-fragment";
 import print from "print-js";
+import Heatmap from "heatmap.js";
 
 Vue.prototype.$print = print;
+Vue.prototype.$Heatmap = Heatmap;
 Vue.prototype.$echarts = echarts;
 Vue.prototype.$axios = axios; //注册到vue上
 

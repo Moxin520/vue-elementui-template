@@ -18,22 +18,22 @@ module.exports = {
   productionSourceMap: false,
   publicPath: "/",
   outputDir: "dist",
-  // devServer: {
-  //   https: false, // https:{type:Boolean}
-  //   open: true, //配置自动启动浏览器
-  //   proxy: {
-  //     "/OneChaos/chaos/api": {
-  //       target: "http://121.199.33.1:8888",
-  //       ws: true,
-  //       changeOrigin: true
-  //     },
-  //     "/OneChaos": {
-  //       target: "http://127.0.0.1.:9998/",
-  //       ws: true,
-  //       changeOrigin: true
-  //     }
-  //   }
-  // },
+  devServer: {
+    https: false, // https:{type:Boolean}
+    open: true //配置自动启动浏览器
+    // proxy: {
+    //   "/OneChaos/chaos/api": {
+    //     target: "http://121.199.33.1:8888",
+    //     ws: true,
+    //     changeOrigin: true
+    //   },
+    //   "/OneChaos": {
+    //     target: "http://127.0.0.1.:9998/",
+    //     ws: true,
+    //     changeOrigin: true
+    //   }
+    // }
+  },
 
   css: {
     loaderOptions: {

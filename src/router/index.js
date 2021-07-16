@@ -12,7 +12,7 @@ export const routes = [
   {
     path: "/",
     component: Layout,
-    name: "dashboard",
+    name: "home",
     isShow: true,
     redirect: "/dashboard",
     meta: {
@@ -51,16 +51,6 @@ export const routes = [
         meta: {
           title: "热力图",
           icon: "el-icon-data-line"
-        }
-      },
-      {
-        path: "test",
-        name: "Test",
-        component: () => import("@/views/test/test.vue"),
-        isShow: true,
-        meta: {
-          title: "测试页面",
-          icon: "el-icon-document"
         }
       }
     ]
