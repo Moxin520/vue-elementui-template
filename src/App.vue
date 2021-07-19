@@ -20,8 +20,5 @@ export default {
     "Hiragino Sans GB", "微软雅黑", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
 }
 </style>

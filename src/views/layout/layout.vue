@@ -7,16 +7,18 @@ export default {
   render(h) {
     return h("div", { class: "layout" }, [
       h(MenuTree, { class: "MenuTree" }),
-      h("div", { class: "main" }, [h(Navigation), h(appMain)])
+      h("div", { class: "main" }, [
+        h(Navigation),
+        h(appMain, { class: "appMain" })
+      ])
     ]);
   }
 };
 </script>
 <style lang="scss" scoped>
 .layout {
-  height: 100%;
+  height: 100vh;
   display: flex;
-  overflow: hidden;
   .main {
     flex: 1;
   }

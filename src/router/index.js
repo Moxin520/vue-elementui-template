@@ -52,6 +52,16 @@ export const routes = [
           title: "热力图",
           icon: "el-icon-data-line"
         }
+      },
+      {
+        path: "quill",
+        name: "Quill",
+        component: () => import("@/views/company/quillEditor.vue"),
+        isShow: true,
+        meta: {
+          title: "富文本",
+          icon: "el-icon-edit-outline"
+        }
       }
     ]
   },
@@ -83,16 +93,6 @@ export const routes = [
         isShow: true,
         meta: {
           title: "测试页面1",
-          icon: "el-icon-document"
-        }
-      },
-      {
-        path: "printjs",
-        name: "printjs",
-        component: () => import("@/views/test/printjs.vue"),
-        isShow: true,
-        meta: {
-          title: "打印案例",
           icon: "el-icon-document"
         }
       }
