@@ -1,6 +1,6 @@
 <template>
   <div class="heatmap">
-    热力图
+    <h1 style="text-align:center">热力图</h1>
     <el-select
       v-model="value1"
       multiple
@@ -16,30 +16,16 @@
       >
       </el-option>
     </el-select>
-
-    <el-select
-      v-model="value"
-      multiple
-      placeholder="请选择"
-      @change="getchange"
-    >
-      <el-option
-        v-for="item in optionsa"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value"
-        :disabled="item.disabled"
-      >
-      </el-option>
-    </el-select>
     <HeatMap></HeatMap>
+    <CanvasMap></CanvasMap>
   </div>
 </template>
 
 <script>
 const HeatMap = () => import("./components/heatmapc.vue");
+const CanvasMap = () => import("./components/canvasMap.vue");
 export default {
-  components: { HeatMap },
+  components: { HeatMap, CanvasMap },
   computed: {
     isTolength() {
       return this.value1.length > 10;
@@ -57,30 +43,6 @@ export default {
   },
   data() {
     return {
-      optionsa: [
-        {
-          value: "选项1",
-          label: "黄金糕"
-        },
-        {
-          value: "选项2",
-          label: "双皮奶",
-          disabled: true
-        },
-        {
-          value: "选项3",
-          label: "蚵仔煎"
-        },
-        {
-          value: "选项4",
-          label: "龙须面"
-        },
-        {
-          value: "选项5",
-          label: "北京烤鸭"
-        }
-      ],
-      value: ["选项1", "选项2"],
       value1: "",
       showSelect: true,
       options: [

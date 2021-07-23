@@ -62,6 +62,26 @@ export const routes = [
           title: "富文本",
           icon: "el-icon-edit-outline"
         }
+      },
+      {
+        path: "drag",
+        name: "Drag",
+        component: () => import("@/views/company/drag.vue"),
+        isShow: true,
+        meta: {
+          title: "拖拽",
+          icon: "el-icon-thumb"
+        }
+      },
+      {
+        path: "echarts",
+        name: "Echarts",
+        component: () => import("@/views/company/echarts.vue"),
+        isShow: true,
+        meta: {
+          title: "图形",
+          icon: "el-icon-data-board"
+        }
       }
     ]
   },

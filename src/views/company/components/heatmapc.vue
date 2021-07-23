@@ -32,7 +32,8 @@ export default {
       data: [
         { x: 100, y: 100, value: 1.5 },
         { x: 130, y: 120, value: 0.7 }, //负值全部加最小1
-        { x: 160, y: 140, value: -0.1 }
+        { x: 160, y: 140, value: 0.1 },
+        { x: 200, y: 140, value: 0.1 }
       ]
     };
     this._heatmapInstancep.setData(data);

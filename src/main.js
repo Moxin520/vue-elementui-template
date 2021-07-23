@@ -7,11 +7,12 @@ import "nprogress/nprogress.css"; //进度条样式(路由跳转等)
 import "./assets/styles/styles.scss"; //自己创建的样式文件
 import "./components"; //导入全局注册的组件的文件
 import "./plugins/element.js";
-import echarts from "echarts";
+import * as echarts from "echarts";
 import axios from "axios"; //导入axios
 import Fragment from "vue-fragment";
 import print from "print-js";
 import Heatmap from "heatmap.js";
+import "./views/company/components/directives";
 
 Vue.prototype.$print = print;
 Vue.prototype.$Heatmap = Heatmap;
