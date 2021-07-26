@@ -69,7 +69,7 @@ const option = {
   ]
 };
 export default {
-  mounted() {
+  activated() {
     this.line1 = this.$echarts.init(this.$refs.line1);
     this.line2 = this.$echarts.init(this.$refs.line2);
     this.line3 = this.$echarts.init(this.$refs.line3);

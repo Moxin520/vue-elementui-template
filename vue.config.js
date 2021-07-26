@@ -14,10 +14,12 @@ const utils = {
     return path.join(__dirname, "..", dir);
   }
 };
+const Timestamp = new Date().getTime();
 module.exports = {
   productionSourceMap: false,
   publicPath: "/",
   outputDir: "dist",
+  assetsDir: "static",
   devServer: {
     https: false, // https:{type:Boolean}
     open: true //配置自动启动浏览器
@@ -55,6 +57,11 @@ module.exports = {
           }
         }
       ]
+    },
+    output: {
+      // 输出重构  打包编译后的 文件名称  【模块名称.版本号.时间戳】
+      filename: `static/js/[name].${Timestamp}.js`,
+      chunkFilename: `static/js/[name].${Timestamp}.js`
     }
   }
 };

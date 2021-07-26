@@ -82,6 +82,16 @@ export const routes = [
           title: "图形",
           icon: "el-icon-data-board"
         }
+      },
+      {
+        path: "threeDemo",
+        name: "ThreeDemo",
+        component: () => import("@/views/company/threeDemo.vue"),
+        isShow: true,
+        meta: {
+          title: "three.js",
+          icon: "el-icon-copy-document"
+        }
       }
     ]
   },
