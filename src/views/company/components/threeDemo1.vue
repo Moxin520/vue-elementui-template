@@ -1,22 +1,13 @@
 <template>
-  <div style="display:flex">
-    <div ref="brain" class="brain"></div>
-    <threeDemo1></threeDemo1>
-  </div>
+  <div ref="brain1" class="brain1"></div>
 </template>
 
 <script>
 import * as THREE from "three";
 const OrbitControls = require("three-orbit-controls")(THREE);
 import { OBJLoader } from "three-obj-mtl-loader";
-import img from "@/assets/images/12.png";
-import threeDemo1 from "./components/threeDemo1.vue";
+// import img from "@/assets/images/12.png";
 export default {
-  name: "ThreeDemo",
-  components: { threeDemo1 },
-  data() {
-    return {};
-  },
   created() {
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); //创建渲染器
     this.scene = new THREE.Scene(); // 创建场景
@@ -31,11 +22,9 @@ export default {
     this.material = null;
   },
   mounted() {
-    this.container = this.$refs.brain;
+    this.container = this.$refs.brain1;
     this.width = this.container.offsetWidth; //窗口宽度
     this.height = this.container.offsetHeight; //窗口高度
-    this.container.addEventListener("dblclick", this.onMouseDblclick, false);
-    this.foundMoudel();
     this.foundLight();
     this.foundCamera();
     this.loaderObj();
@@ -44,66 +33,59 @@ export default {
   methods: {
     // 加载obj文件
     loaderObj() {
-      this.textureLoader.load(img);
+      var texture = new THREE.TextureLoader();
+      const bg = texture.load("../../../assets/logo.png");
+      // let a = this.textureLoader.load(img);
       this.loader.load(this.publicPath + "./static/brain.obj", obj => {
         this.material = new THREE.MeshPhongMaterial({
-          map: img,
           color: 0xb4adaf,
-          side: THREE.DoubleSide,
-          vertexColors: THREE.NoColors,
-          specular: 0x444444,
-          transparent: true,
-          depthTest: true,
-          depthWrite: false,
-          polygonOffset: true,
-          polygonOffsetFactor: -4,
-          wireframe: false
+          side: THREE.DoubleSide
         });
         this.object = obj;
         let object = obj.children[0];
+        obj.material = {
+          map: bg,
+          transparent: true,
+          depthTest: true,
+          depthWrite: false,
+          polygonOffset: true,
+          flatShading: false,
+          polygonOffsetFactor: -4,
+          wireframe: false,
+          needsUpdate: true
+        };
+        obj.traverse(function(child) {
+          if (child instanceof THREE.Mesh) {
+            //将贴图赋于材质
+            child.material = {
+              map: bg,
+              transparent: true,
+              depthTest: true,
+              depthWrite: false,
+              polygonOffset: true,
+              flatShading: false,
+              polygonOffsetFactor: -4,
+              wireframe: false,
+              needsUpdate: true
+            };
+            child.position.set(500, 500, 500);
+            //重点，没有该句会导致PNG无法正确显示透明效果
+            // child.material.transparent = true;
+          }
+        });
         object.geometry.center();
-        object.name = "brain";
-        this.scene.add(obj);
-      });
-    },
-    // 创建网格模型
-    foundMoudel() {
-      this.textureLoader.load(img, img => {
-        let geometry = new THREE.SphereGeometry(15, 15, 15); //创建一个立方体几何对象Geometry
-        let material = new THREE.MeshLambertMaterial({
-          map: img,
-          // color: 0x0000ff,
-          opacity: 1,
-          transparent: true,
-          side: THREE.DoubleSide,
-          vertexColors: THREE.NoColors,
-          depthTest: true,
-          depthWrite: false,
-          polygonOffset: true,
-          polygonOffsetFactor: -4,
-          wireframe: false
-        }); //材质对象Material
-        let mesh = new THREE.Mesh(geometry, material); //网格模型对象Mesh
-        mesh.name = "1";
-        mesh.position.set(20, 80, 10);
-        let geometry1 = new THREE.SphereGeometry(15, 15, 15); //创建一个立方体几何对象Geometry
-        let material1 = new THREE.MeshLambertMaterial({
-          color: 0x0000ff,
-          opacity: 1,
-          transparent: true,
-          side: THREE.DoubleSide,
-          vertexColors: THREE.NoColors,
-          depthTest: true,
-          depthWrite: false,
-          polygonOffset: true,
-          polygonOffsetFactor: -4,
-          wireframe: false
-        }); //材质对象Material
-        let mesh1 = new THREE.Mesh(geometry1, material1); //网格模型对象Mesh
-        mesh1.name = "2";
-        mesh1.position.set(-20, 80, 10);
-        this.scene.add(mesh); //网格模型添加到场景中
-        this.scene.add(mesh1); //网格模型添加到场景中
+        object.geometry.colorsNeedUpdate = true;
+        object.material.needsUpdate = true;
+        let brainMesh = new THREE.Mesh(object.geometry, this.material);
+        brainMesh.needsUpdate = true;
+        brainMesh.name = "brain";
+        console.log(obj);
+        this.scene.add(brainMesh);
+        // var texture = new THREE.TextureLoader();
+        // const bg = texture.load("../../../assets/images/10.png");
+        // let material = new THREE.MeshBasicMaterial({ map: bg });
+        // let brainMesh1 = new THREE.Mesh(object.geometry, material);
+        // this.scene.add(brainMesh1);
       });
     },
     //创建光源
@@ -157,31 +139,13 @@ export default {
       //执行渲染操作   指定场景、相机作为参数
       this.renderer.render(this.scene, this.camera);
       requestAnimationFrame(this.render); //请求再次执行渲染函数render
-    },
-    // 鼠标双击触发的方法
-    onMouseDblclick(event) {
-      event.preventDefault();
-      let raycaster = new THREE.Raycaster();
-      let mouse = new THREE.Vector2();
-      // 获取模型坐标数据
-      let rect = this.renderer.domElement.getBoundingClientRect();
-      // 获取鼠标点击坐标数据
-      mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-      mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-      raycaster.setFromCamera(mouse, this.camera);
-      let intersects = raycaster.intersectObjects(this.scene.children, true);
-      if (intersects.length > 0) {
-        console.log("选中头模坐标:", intersects[0].object.name);
-      } else {
-        console.log("未选中头模");
-      }
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.brain {
+.brain1 {
   width: 30vw;
   height: 50vh;
   border: 1px solid black;
